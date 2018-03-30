@@ -6,7 +6,7 @@ module.exports = {
     // Environment-dependent settings
     development: {
       db: {
-        dialect: 'sqlite',
+        dialect: 'mysql',
         storage: ':memory:'
       }
     },
