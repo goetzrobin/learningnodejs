@@ -11,7 +11,7 @@ module.exports = {
         host: 'localhost',//process.env.HOST,
         user: 'root',//process.env.USER,
         password: 'yourpassword',//process.env.PASSWORD,
-        //database: process.env.DATABASE
+        database: process.env.DATABASE
       }
     },
     production: {
