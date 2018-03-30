@@ -8,10 +8,10 @@ module.exports = {
       db: {
         dialect: 'mysql',
         storage: ':memory:',
-        host: process.env.HOST,
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        database: process.env.DATABASE
+        host: 'localhost',//process.env.HOST,
+        user: 'root',//process.env.USER,
+        password: 'yourpassword',//process.env.PASSWORD,
+        //database: process.env.DATABASE
       }
     },
     production: {
