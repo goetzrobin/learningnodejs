@@ -3,7 +3,7 @@
 const Hapi = require('hapi');
 const Settings = require('./settings');
 const Routes = require('./lib/routes');
-
+const Models = require ('./lib/models/index.js');
 const server = new Hapi.server({
     host:'localhost',
     port:Settings.port
@@ -24,5 +24,8 @@ async function start() {
     console.log('Server running at:', server.info.uri);
 };
 
-start();
+Models.sequelize.sync().then(() => {
+    start();
+  });
+
 console.log(Settings.port)
