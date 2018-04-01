@@ -6,8 +6,8 @@ const Routes = require('./lib/routes');
 const Models = require('./lib/models/');
 const Path = require('path');
 const Vision = require('vision');
-const Pug = require('pug')
-
+const Pug = require('pug');
+const Inert = require('inert');
 const server = new Hapi.server({
     host: 'localhost',
     port: Settings.port
@@ -28,7 +28,8 @@ async function start() {
 
 const provision = async () => {
     await server.register(Vision)
-    console.log(__dirname)
+    await server.register(Inert)
+
     // View settings
     server.views({
         engines: { pug: Pug },
