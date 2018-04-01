@@ -1,0 +1,39 @@
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible' content='ie=edge')
+    //title= page
+    //meta(name='description' content=description)
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+
+    link(href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,400i,700,700i|Ubuntu:500' rel='stylesheet')
+    link(rel='stylesheet' href='/styles/main.css')
+  body
+    h1 Hello from home
+    //- block content
+
+    script(src='https://code.jquery.com/jquery-3.1.1.min.js' integrity='sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=' crossorigin='anonymous')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js")
+    script(src='/scripts/main.js')
+//- extends layout
+
+//- block content
+//-   header(container)
+//-     h1 Notes Board
+
+//-     nav
+//-       ul
+//-         // This will show a modal window with a form to send new notes
+//-         li: a(href='#note-form' rel='modal:open') Publish
+
+//-   main(container).notes-list
+//-     // We loop over all the notes received from our controller rendering our note component with each entry
+//-     each note in data.notes
+//-       include components/note
+
+//-   // Form to add a new note, this is used by our controller `create` function.
+//-   form(action='/note' method='POST').note-form#note-form
+//-     p: input(name='noteTitle' type='text' placeholder='Title…')
+//-     p: input(name='noteDescription' type='text' placeholder='Short description…')
+//-     p: textarea(name='noteContent') Write here the content of the new note…
+//-     p._text-right: input(type='submit' value='Submit')

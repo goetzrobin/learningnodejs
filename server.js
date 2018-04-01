@@ -3,13 +3,15 @@
 const Hapi = require('hapi');
 const Settings = require('./settings');
 const Routes = require('./lib/routes');
-const Models = require ('./lib/models/index.js');
-const server = new Hapi.server({
-    host:'localhost',
-    port:Settings.port
-});
+const Models = require('./lib/models/');
+const Path = require('path');
+const Vision = require('vision');
+const Pug = require('pug')
 
-server.route(Routes)
+const server = new Hapi.server({
+    host: 'localhost',
+    port: Settings.port
+});
 
 async function start() {
 
@@ -24,8 +26,29 @@ async function start() {
     console.log('Server running at:', server.info.uri);
 };
 
+const provision = async () => {
+    await server.register(Vision)
+    console.log(__dirname)
+    // View settings
+    server.views({
+        engines: { pug: Pug },
+        relativeTo: __dirname,
+        path: Path.join(__dirname, 'lib/views'),
+        //     compileOptions: {
+        //         pretty: false
+        //     },
+        //     isCached: Settings.env === 'production'
+    });
+
+    // Add routes
+    server.route(Routes);
+
+    await start();
+};
+
 Models.sequelize.sync().then(() => {
-    start();
-  });
+    provision();
+});
+
 
 console.log(Settings.port)
